@@ -11,7 +11,7 @@
 
 = Lorem Ipsum
 
-lipsum(10)
+#lorem(10)
 
 #thm("Hello")[
   "Hello" is a nice greeting.
