@@ -57,13 +57,14 @@
 
   set page(header: context {
     if counter(page).get().first() > 1 [
+      #let headertext = smallcaps
       #grid(
         columns: (1fr, 1fr, 1fr),
         align: (left, center, right),
-        [#authors_short],
-        context[#document.title],
-        [#date_string],
-        "",
+        [#headertext(authors_short)],
+        context[#headertext(document.title)],
+        [#headertext(date_string)],
+        [#v(0.5em)],
         grid.hline()
       )
     ]
