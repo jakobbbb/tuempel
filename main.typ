@@ -2,11 +2,11 @@
 
 #set document(
   title: "Hello, Typst!",
-  author: ("Jane Doe",)
+  author: "Jane Doe"
 )
 #show: tümpel.with(
   institute: "University of Ipsum",
-  email: ("jane.doe@example.com",)
+  email: "jane.doe@example.com"
 )
 
 = Lorem Ipsum

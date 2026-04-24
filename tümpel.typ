@@ -78,7 +78,7 @@
       document.author,
       date_string,
       inst: institute,
-      emails: email,
+      emails: if type(email) == str { (email,) } else { email },
     )
   ]
 
