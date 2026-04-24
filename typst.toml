@@ -1,0 +1,7 @@
+[package]
+name = "tümpel"
+version = "0.0.1"
+entrypoint = "tümpel.typ"
+authors = ["meow :3"]
+license = "GPL"
+description = "A template"
