@@ -5,3 +5,7 @@ entrypoint = "tümpel.typ"
 authors = ["meow :3"]
 license = "GPL"
 description = "A template"
+
+[template]
+path = "."
+entrypoint = "main.typ"
