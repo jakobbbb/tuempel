@@ -1,15 +1,32 @@
-#let titleblock(title, author, date, inst: none, email: none) = {
+#let authorblock(author, email) = [
+    #text(size: 1em)[#author] \
+    #if email != none [
+      #show link: set text(font: "DejaVu Sans Mono", size: 0.7em)
+      #link("mailto:" + email)[#email]
+      #v(0.8em)
+    ]
+]
+
+#let titleblock(title, authors, date, inst: none, emails: none) = {
   block(
     width: 100%,
   )[
     #set align(center)
     #text(size: 2em, weight: "bold")[#title]
 
-    #text(size: 1em)[#author.first()] \
-    #if email != none [
-      #show link: set text(font: "DejaVu Sans Mono", size: 0.7em)
-      #link("mailto:" + email)[#email]
-    ]
+    #let num_cols = calc.min(authors.len(), 2)
+    #let cols = (..range(num_cols).map(_ => 1fr))
+
+    #grid(
+      columns: cols,
+      ..authors.enumerate().map(((i, author)) => [
+        #if i > 1 {
+          v(1em)
+        }
+        #let email = if emails != none {emails.at(i)} else {none}
+        #authorblock(author, email)
+      ])
+    )
 
     #if inst != none [
       #text(size: 1em)[#inst]
@@ -59,7 +76,7 @@
       document.author,
       date_string,
       inst: institute,
-      email: email,
+      emails: email,
     )
   ]
 
