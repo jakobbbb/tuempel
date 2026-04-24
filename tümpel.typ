@@ -40,6 +40,7 @@
 
   show heading: set block(above: 1.4em, below: 1em)
   show link: underline
+  show ref: underline
 
   set page(numbering: "—1—")
 
@@ -85,12 +86,13 @@
 
 #let thmcounter = counter("_thm")
 #let thmnumber() = context thmcounter.display()
-#let _thm(kind) = (what, content) => {
+#let _thm(kind) = (what, ref: none, content) => {
   thmcounter.step()
   context block[
-    *#kind #thmnumber() (#what).*
-    #figure(content, kind: kind, supplement: kind)
-    #label(kind + "_" + str(thmcounter.get().first()))
+    *#kind #thmnumber() (#what).* #content
+    #v(-1em)  // evil hax :3
+    #figure([], kind: kind, supplement: kind)
+    #label(kind + "_" + str(if ref != none {ref} else {what}))
   ]
 }
 
