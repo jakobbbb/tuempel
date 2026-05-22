@@ -42,7 +42,9 @@
   show link: underline
   show ref: underline
 
-  set page(numbering: "—1—")
+  set page(footer: context [
+    #align(center, counter(page).display("—1—"))
+  ])
 
   let date = datetime.today()
   let date_string = date.display("[month repr:long] [day], [year]")
