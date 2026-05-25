@@ -12,7 +12,7 @@
     width: 100%,
   )[
     #set align(center)
-    #heading(text(size: 1.5em, weight: "bold")[#title])
+    #text(size: 2em, weight: "bold")[#title]
 
     #let num_cols = calc.min(authors.len(), 2)
     #let cols = (..range(num_cols).map(_ => 1fr))
@@ -36,14 +36,14 @@
   ]
 }
 
-#let tümpel(institute: none, email: none, date: none, doc) = {
+#let tümpel(institute: none, email: none, date: none, shorttitle: none, shortauthor: none, doc) = {
 
   show heading: set block(above: 1.4em, below: 1em)
   show link: underline
   show ref: underline
 
   set page(footer: context [
-    #align(center, counter(page).display("—1—"))
+    #align(center, counter(page).display("— 1 —"))
   ])
 
   let today = datetime.today()
@@ -58,14 +58,17 @@
     ]
   ]
 
+  let header_title = if shorttitle != none { shorttitle } else { document.title }
+  let header_author = if shortauthor != none { shortauthor } else { authors_short }
+
   set page(header: context {
     if counter(page).get().first() > 1 [
       #let headertext = smallcaps
       #grid(
         columns: (1fr, 1fr, 1fr),
         align: (left, center, right),
-        [#headertext(authors_short)],
-        context[#headertext(document.title)],
+        [#headertext(header_author)],
+        context[#headertext(header_title)],
         [#headertext(date_string)],
         [#v(0.5em)],
         grid.hline()
