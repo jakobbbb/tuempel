@@ -36,7 +36,7 @@
   ]
 }
 
-#let tümpel(institute: none, email: none, doc) = {
+#let tümpel(institute: none, email: none, date: none, doc) = {
 
   show heading: set block(above: 1.4em, below: 1em)
   show link: underline
@@ -46,8 +46,9 @@
     #align(center, counter(page).display("—1—"))
   ])
 
-  let date = datetime.today()
-  let date_string = date.display("[month repr:long] [day], [year]")
+  let today = datetime.today()
+
+  let date_string = if date != none { date } else { today.display("[month repr:long] [day], [year]") }
 
   let authors_short = context[
     #if document.author.len() == 1 [
