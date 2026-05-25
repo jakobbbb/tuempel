@@ -12,7 +12,7 @@
     width: 100%,
   )[
     #set align(center)
-    #text(size: 2em, weight: "bold")[#title]
+    #heading(text(size: 1.5em, weight: "bold")[#title])
 
     #let num_cols = calc.min(authors.len(), 2)
     #let cols = (..range(num_cols).map(_ => 1fr))
