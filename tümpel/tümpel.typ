@@ -36,7 +36,7 @@
   ]
 }
 
-#let tümpel(institute: none, email: none, date: none, shorttitle: none, shortauthor: none, doc) = {
+#let tümpel(institute: none, email: none, date: none, shorttitle: none, shortauthor: none, internal: "", doc) = {
 
   show heading: set block(above: 1.4em, below: 1em)
   show link: underline
@@ -95,6 +95,16 @@
     #align(center, counter(page).display("— 1 —"))
   ])
 
+  set page(
+    background: [
+      #v(1em)
+      #text(red, size: 14pt)[*#internal*]
+      #v(1fr)
+      #sys.inputs.at("ver", default: "")
+      #v(1em)
+    ],
+  )
+
   context[
     #titleblock(
       document.title,
@@ -104,6 +114,7 @@
       emails: if type(email) == str { (email,) } else { email },
     )
   ]
+
 
   doc
 }
@@ -124,3 +135,6 @@
 #let thm = _thm("Theorem")
 #let rmk = _thm("Remark")
 #let proof = _thm("Proof")
+
+
+
