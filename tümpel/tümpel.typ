@@ -71,12 +71,29 @@
         context[#headertext(header_title)],
         [#headertext(date_string)],
         [#v(0.5em)],
-        grid.hline()
       )
+      #v(0pt, weak: true)
+      #grid(
+    columns: (1fr,1fr,1fr,1fr),
+    box(fill: rgb("#ff2b2b"), width: 1fr, height: 5%)[#sym.space],
+    box(fill: rgb("#ffbd2b"), width: 1fr, height: 5%)[#sym.space],
+    box(fill: rgb("#6ba823"), width: 1fr, height: 5%)[#sym.space],
+    box(fill: rgb("#2662b5"), width: 1fr, height: 5%)[#sym.space]
+  )
     ]
   })
 
-  // title[#context[#document.title]]
+
+  set page(footer: context [
+    #grid(
+      columns: (1fr,1fr,1fr,1fr),
+      box(fill: rgb("#ff2b2b"), width: 1fr, height: 10%)[#sym.space],
+      box(fill: rgb("#ffbd2b"), width: 1fr, height: 10%)[#sym.space],
+      box(fill: rgb("#6ba823"), width: 1fr, height: 10%)[#sym.space],
+      box(fill: rgb("#2662b5"), width: 1fr, height: 10%)[#sym.space]
+    )
+    #align(center, counter(page).display("— 1 —"))
+  ])
 
   context[
     #titleblock(
