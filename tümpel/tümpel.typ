@@ -58,8 +58,8 @@
     ]
   ]
 
-  let header_title = if shorttitle != none { shorttitle } else { document.title }
-  let header_author = if shortauthor != none { shortauthor } else { authors_short }
+  let header_title = context [#if shorttitle != none { shorttitle } else { document.title }]
+  let header_author = [#if shortauthor != none { shortauthor } else { authors_short }]
 
   set page(header: context {
     if counter(page).get().first() > 1 [
