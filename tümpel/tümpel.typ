@@ -32,7 +32,14 @@
       #text(size: 1em)[#inst]
     ]
 
-    #text(size: 1em)[#date]
+    #let ver = sys.inputs.at("ver", default: none)
+
+    #text(size: 1em)[#date
+     #if (ver != none) [
+       #linebreak()
+       #eval(ver, mode: "markup")
+     ]
+    ]
   ]
 }
 
@@ -45,6 +52,10 @@
   set page(footer: context [
     #align(center, counter(page).display("— 1 —"))
   ])
+
+  if date == none {
+    date = sys.inputs.at("date", default: none)
+  }
 
   let today = datetime.today()
 
